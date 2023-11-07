@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, mean_absolute_error
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
-file = pd.read_csv("/Users/shreyamhemanta/Documents/GitHub/Programming/Python/DmdwProject/creditcard_2023.csv")
+file = pd.read_csv("/Users/shreyamhemanta/Documents/GitHub/Credit-Card-Fraud-Detection-2023-model/creditcard_2023.csv")
 
 print(file)
 
