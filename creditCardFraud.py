@@ -3,6 +3,9 @@ from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.metrics import accuracy_score, mean_absolute_error
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
 
 file = pd.read_csv("/Users/shreyamhemanta/Documents/GitHub/Credit-Card-Fraud-Detection-2023-model/creditcard_2023.csv")
 
@@ -62,3 +65,35 @@ log_min_max_scaled.fit(x_train_min_max_scaled, y_train_min_max_scaled)
 y_pred_min_max_scaled_log = log_min_max_scaled.predict(x_test_min_max_scaled)
 acc_min_max_scaled_log = accuracy_score(y_test_min_max_scaled, y_pred_min_max_scaled_log)*100
 print(y_pred_min_max_scaled_log, "\n", acc_min_max_scaled_log)
+
+print("\nUnscaled Decision Tree")
+dt = DecisionTreeClassifier()
+dt.fit(x_train, y_train)
+y_pred_dt = dt.predict(x_test)
+acc_dt = accuracy_score(y_test, y_pred_dt)*100
+print(y_pred_dt, "\n", acc_dt)
+
+print("\nStandard Scaled Decision Tree")
+dt_scaled = DecisionTreeClassifier()
+dt_scaled.fit(x_train_scaled, y_train_scaled)
+y_pred_scaled_dt = dt_scaled.predict(x_test_scaled)
+acc_scaled_dt = accuracy_score(y_test_scaled, y_pred_scaled_dt)*100
+print(y_pred_scaled_dt, "\n", acc_scaled_dt)
+
+print("\nMin-Max Scaled Decision Tree")
+dt_min_max_scaled = DecisionTreeClassifier()
+dt_min_max_scaled.fit(x_train_min_max_scaled, y_train_min_max_scaled)
+y_pred_min_max_scaled_dt = dt_min_max_scaled.predict(x_test_min_max_scaled)
+acc_min_max_scaled_dt = accuracy_score(y_test_min_max_scaled, y_pred_min_max_scaled_dt)*100
+print(y_pred_min_max_scaled_dt, "\n", acc_min_max_scaled_dt)
+
+# # Plot the Linear Regression results
+# plt.figure(figsize=(10, 6))
+# plt.scatter(y_test, y_pred_lin, label='Actual vs Predicted (Unscaled)')
+# plt.scatter(y_test, y_pred_scaled_lin, label='Actual vs Predicted (Standard Scaled)')
+# plt.scatter(y_test, y_pred_min_max_scaled_lin, label='Actual vs Predicted (Min-Max Scaled)')
+# plt.xlabel('Actual Values')
+# plt.ylabel('Predicted Values')
+# plt.legend()
+# plt.title('Linear Regression Results')
+# plt.show()
