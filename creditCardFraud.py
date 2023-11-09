@@ -87,6 +87,27 @@ y_pred_min_max_scaled_dt = dt_min_max_scaled.predict(x_test_min_max_scaled)
 acc_min_max_scaled_dt = accuracy_score(y_test_min_max_scaled, y_pred_min_max_scaled_dt)*100
 print(y_pred_min_max_scaled_dt, "\n", acc_min_max_scaled_dt)
 
+print("\nUnscaled Random Forest")
+rf = RandomForestClassifier()
+rf.fit(x_train, y_train)
+y_pred_rf = rf.predict(x_test)
+acc_rf = accuracy_score(y_test, y_pred_rf)*100
+print(y_pred_rf, "\n", acc_rf)
+
+print("\nStandard Scaled Random Forest")
+rf_scaled = DecisionTreeClassifier()
+rf_scaled.fit(x_train_scaled, y_train_scaled)
+y_pred_scaled_rf = rf_scaled.predict(x_test_scaled)
+acc_scaled_rf = accuracy_score(y_test_scaled, y_pred_scaled_rf)*100
+print(y_pred_scaled_rf, "\n", acc_scaled_rf)
+
+print("\nMin-Max Scaled Random Forest")
+rf_min_max_scaled = DecisionTreeClassifier()
+rf_min_max_scaled.fit(x_train_min_max_scaled, y_train_min_max_scaled)
+y_pred_min_max_scaled_rf = rf_min_max_scaled.predict(x_test_min_max_scaled)
+acc_min_max_scaled_rf = accuracy_score(y_test_min_max_scaled, y_pred_min_max_scaled_rf)*100
+print(y_pred_min_max_scaled_rf, "\n", acc_min_max_scaled_rf)
+
 # # Plot the Linear Regression results
 # plt.figure(figsize=(10, 6))
 # plt.scatter(y_test, y_pred_lin, label='Actual vs Predicted (Unscaled)')
