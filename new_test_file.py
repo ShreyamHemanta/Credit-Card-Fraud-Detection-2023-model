@@ -148,14 +148,3 @@ rf_reg_min_max_scaled.fit(x_train_min_max_scaled, y_train_min_max_scaled)
 y_pred_min_max_scaled_rf_reg = rf_reg_min_max_scaled.predict(x_test_min_max_scaled)
 acc_min_max_scaled_rf_reg = accuracy_score(y_test_min_max_scaled, y_pred_min_max_scaled_rf_reg)*100
 print(y_pred_min_max_scaled_rf_reg, "\n", acc_min_max_scaled_rf_reg)
-
-# # Plot the Linear Regression results
-# plt.figure(figsize=(10, 6))
-# plt.scatter(y_test, y_pred_lin, label='Actual vs Predicted (Unscaled)')
-# plt.scatter(y_test, y_pred_scaled_lin, label='Actual vs Predicted (Standard Scaled)')
-# plt.scatter(y_test, y_pred_min_max_scaled_lin, label='Actual vs Predicted (Min-Max Scaled)')
-# plt.xlabel('Actual Values')
-# plt.ylabel('Predicted Values')
-# plt.legend()
-# plt.title('Linear Regression Results')
-# plt.show()
